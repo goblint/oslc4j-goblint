@@ -21,6 +21,7 @@ public class GoblintOutput
 	private URI				goblintInput;
 	private boolean 		ready;
 	private boolean 		failure;
+	private URI				result;
 	
     @OslcDescription("The Goblint input.")
     @OslcOccurs(Occurs.ExactlyOne)
@@ -72,6 +73,19 @@ public class GoblintOutput
 
 	public void setFailure(boolean failure) {
 		this.failure = failure;
+	}
+
+	@OslcDescription("Result of the Analysis.")
+    @OslcOccurs(Occurs.ZeroOrOne)
+    @OslcPropertyDefinition(Constants.GOBLINT_NAMESPACE + "result")
+    @OslcReadOnly
+    @OslcTitle("result")
+	public URI getResult() {
+		return result;
+	}
+
+	public void setResult(URI goblintResult) {
+		this.result = goblintResult;
 	}
 	
 }

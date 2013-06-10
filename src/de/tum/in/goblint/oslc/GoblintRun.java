@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.net.URISyntaxException;
 
 
 public class GoblintRun extends Thread
@@ -37,7 +38,7 @@ public class GoblintRun extends Thread
 		File 	   odir = new File(Paths.getOutputPath() + File.separatorChar + output.getId());
 		int depth =  input.getFileBaseURI().getPath().split("/").length;
 		String wget     = "/opt/local/bin/wget -nH -r --no-parent --reject index.html* --cut-dirs=" + depth+" " + input.getFileBaseURI().toString()+"/" ;
-		String goblint  = Paths.getGoblintBinPath() + File.separatorChar + "goblint " + input.getCallString() + " > " + odir.getAbsolutePath() + File.separatorChar + "result.txt" ;
+		String goblint  = Paths.getGoblintBinPath() + File.separatorChar + "goblint --sets result indented " + input.getCallString() + " -o " + odir.getAbsolutePath() + File.separatorChar + "result.xml" ;
 		
 		
 		output.setReady(false);
@@ -66,6 +67,13 @@ public class GoblintRun extends Thread
 
 			System.out.printf("exec:%s\n",goblint);
 			Process p2 = Runtime.getRuntime().exec(goblint,null,idir);
+			try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(p2.getInputStream()));
+			String line = null;  
+            while ((line = in.readLine()) != null) {  
+                System.out.printf(">%s\n",line);  
+            }  
+			} catch (IOException e) {}
 			if (p2.waitFor() != 0) {
 				output.setFailure(true);
 			}
@@ -75,6 +83,13 @@ public class GoblintRun extends Thread
 		} catch (InterruptedException e) {
 			output.setFailure(true);
 			e.printStackTrace();
+		}
+		if (!output.getFailure()) {
+			try {
+				output.setResult(new URI(Paths.getOutputUrl().toString()+output.getId()+"/result.xml"));
+			} catch (URISyntaxException e) {
+				output.setFailure(true);
+			}
 		}
 		output.setReady(true);
 	}
