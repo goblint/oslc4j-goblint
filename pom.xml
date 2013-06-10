@@ -15,12 +15,14 @@
   </properties>
   <build>
     <sourceDirectory>${basedir}/src/</sourceDirectory>
-    <testResources>
-      <testResource>
-        <directory>test/resources</directory>
-      </testResource>
-    </testResources>
-    
+	<resources>	
+    	<resource>
+      	<directory>${basedir}/src</directory>
+      	<excludes>
+        <exclude>**/*.java</exclude>
+      	</excludes>
+    	</resource>
+  	</resources>    
   	<plugins>
   		<plugin>
   			<groupId>org.apache.maven.plugins</groupId>
@@ -97,6 +99,15 @@
 					<systemProperty>
 						<name>jetty.port</name>
 						<value>8080</value>
+					</systemProperty>
+					
+					<systemProperty>
+						<name>org.eclipse.lyo.oslc4j.client.uiuri</name>
+						<value>http://localhost:8080/OSLC4JUI</value>
+					</systemProperty>
+					<systemProperty>
+						<name>org.eclipse.lyo.oslc4j.client.registryuri</name>
+						<value>http://localhost:8080/OSLC4JRegistry/catalog/singleton</value>
 					</systemProperty>
 
 				</systemProperties>

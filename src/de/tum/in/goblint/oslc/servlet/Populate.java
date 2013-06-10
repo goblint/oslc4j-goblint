@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import de.tum.in.goblint.oslc.GoblintInput;
+import de.tum.in.goblint.oslc.GoblintOutput;
 import de.tum.in.goblint.oslc.Persistence;
 
 
@@ -35,8 +36,13 @@ final class Populate
            throws URISyntaxException
     {
     	System.out.print("populate()\n");
-        persistGoblintInput(createGoblintInput(10,"http://localhost:8080/files/proj1/","http://localhost:8080/files/conf1.json","main.c"));
-        persistGoblintInput(createGoblintInput(20,"http://localhost:8080/files/proj2/","http://localhost:8080/files/conf2.json","test.c"));
+    	GoblintInput i1 = createGoblintInput(10,"http://localhost/~kalmera/proj1/files","http://localhost/~kalmera/proj1/conf.json","main.c");
+        persistGoblintInput(i1);
+    	GoblintInput i2 = createGoblintInput(20,"http://localhost:8080/files/proj2/","http://localhost:8080/files/conf2.json","test.c");
+        persistGoblintInput(i2);
+        GoblintOutput o1 = createGoblintOutput(40, "http://localhost:8080/oslj4j-goblint/goblint/input/10", false, true);
+        persistGoblintOutput(o1);
+        
     }
 
 
@@ -58,17 +64,44 @@ final class Populate
         return gi;
     }
 
+    private static GoblintOutput createGoblintOutput(
+    		int          id,
+    	    String		 input,
+    	    boolean      ready,
+    		boolean      failure
+    	) throws URISyntaxException
+    {
+        final GoblintOutput go = new GoblintOutput();
+
+        go.setId(id);
+        go.setGoblintInput(new URI(input));
+        go.setReady(ready);
+        go.setFailure(failure);
+
+        return go;
+    }
+
     private void persistGoblintInput(final GoblintInput input)
             throws URISyntaxException
     {
         final int identifier = input.getId();
 
-        final URI about = new URI(basePath + "/goblint/inputs/" + identifier);
+        final URI about = new URI(basePath + "/goblint/input/" + identifier);
 
         input.setAbout(about);
-        input.setId(identifier);
         input.setServiceProvider(serviceProviderURI);
 
         Persistence.addInput(input);
+    }
+    
+    private void persistGoblintOutput(final GoblintOutput output)
+            throws URISyntaxException
+    {
+        final int identifier = output.getId();
+
+        final URI about = new URI(basePath + "/goblint/output/" + identifier);
+
+        output.setAbout(about);
+        Persistence.addOutput(output);
     }
 }

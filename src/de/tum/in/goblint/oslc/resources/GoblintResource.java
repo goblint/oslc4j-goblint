@@ -23,6 +23,8 @@ import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
 
 import de.tum.in.goblint.oslc.Constants;
 import de.tum.in.goblint.oslc.GoblintInput;
+import de.tum.in.goblint.oslc.GoblintOutput;
+import de.tum.in.goblint.oslc.GoblintRun;
 import de.tum.in.goblint.oslc.Persistence;
 import de.tum.in.goblint.oslc.Utilities;
 
@@ -42,8 +44,8 @@ public class GoblintResource {
     @Path("create_input")
     @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public Response addStockQuote(@Context final HttpServletRequest httpServletRequest,
-                                           final GoblintInput       input)
+    public Response addInput(@Context final HttpServletRequest httpServletRequest,
+                                      final GoblintInput       input)
            throws URISyntaxException
     {
         final int identifier = Utilities.getNewId();
@@ -62,6 +64,42 @@ public class GoblintResource {
         Persistence.addInput(input);
 
         return Response.created(about).entity(input).build();
+    }
+
+    @OslcCreationFactory
+    (
+         title = "Goblint Output Creation Factory",
+         label = "Goblint Output Creation",
+         resourceShapes = {OslcConstants.PATH_RESOURCE_SHAPES + "/" + Constants.PATH_GOBLINT},
+         resourceTypes = {Constants.TYPE_GOBLINT_INPUT},
+         usages = {OslcConstants.OSLC_USAGE_DEFAULT}
+    )
+    @POST
+    @Path("create_output")
+    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
+    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
+    public Response addOutput(@Context final HttpServletRequest httpServletRequest,
+                                       final GoblintOutput      output)
+           throws URISyntaxException
+    {
+        final int identifier = Utilities.getNewId();
+
+        final URI about = new URI(httpServletRequest.getScheme(),
+                                  null,
+                                  httpServletRequest.getServerName(),
+                                  httpServletRequest.getServerPort(),
+                                  httpServletRequest.getContextPath() + "/goblint/output/" + identifier,
+                                  null,
+                                  null);
+
+        output.setAbout(about);
+        output.setId(identifier);
+        
+        Persistence.addOutput(output);
+
+        (new GoblintRun(output)).start();
+        
+        return Response.created(about).entity(output).build();
     }
 
     @GET
@@ -85,19 +123,19 @@ public class GoblintResource {
 	@GET
     @Path("output")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public GoblintInput[] getOutputs()
+    public GoblintOutput[] getOutputs()
            throws JSONException
     {
-		return new GoblintInput[0];
+		return Persistence.getOutputs();
     }
 
 	@GET
     @Path("output/{outputId}")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public GoblintInput[] getOutput(@PathParam("outputId") int outputId)
+    public GoblintOutput getOutput(@PathParam("outputId") int outputId)
            throws JSONException
     {
-		throw new WebApplicationException(Status.NOT_FOUND);
+		return Persistence.getOutput(outputId);
     }
 }
 

@@ -27,7 +27,7 @@ public class ServletListener
     private static final int REGISTRATION_DELAY = 5000; //Delay before contacting OSLC4JRegistry
     private static final Logger logger = Logger.getLogger(ServletListener.class.getName());
 	
-    private static final String HOST = getHost();
+    private static final String HOST = "localhost";
 
     private ServiceProviderRegistryClient client;
 
@@ -41,7 +41,7 @@ public class ServletListener
     {
         final String basePath = generateBasePath(servletContextEvent);
         
-
+        System.out.println("Terminating ...");
         if (client != null)
         {
             //Don't try to deregister if catalog is on same HOST as us.   

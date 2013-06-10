@@ -1,9 +1,13 @@
 package de.tum.in.goblint.oslc.resources;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 import org.eclipse.lyo.oslc4j.application.OslcWinkApplication;
@@ -34,10 +38,11 @@ public class Oslc4GoblintApplication
 
 	public Oslc4GoblintApplication()
 			throws OslcCoreApplicationException,
-			URISyntaxException
+			URISyntaxException, IOException
 	{
 		super(RESOURCE_CLASSES,
 				OslcConstants.PATH_RESOURCE_SHAPES,
 				RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP);
+		
 	}
 }

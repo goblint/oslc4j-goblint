@@ -17,20 +17,61 @@ import org.eclipse.lyo.oslc4j.core.model.Occurs;
 public class GoblintOutput 
 	extends AbstractResource
 {
-	private URI 			goblintInputURI;
-	private GoblintInput	goblintInput;
+	private int 		    id;
+	private URI				goblintInput;
+	private boolean 		ready;
+	private boolean 		failure;
 	
-    @OslcDescription("URI of the Goblint input.")
+    @OslcDescription("The Goblint input.")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcPropertyDefinition(Constants.GOBLINT_NAMESPACE + "goblintInput")
     @OslcReadOnly
     @OslcTitle("input")
-    public URI getGoblintInputURI() {
-		return goblintInputURI;
+    public URI getGoblintInput() {
+		return goblintInput;
 	}
     
-	public void setGoblintInputURI(URI goblintInputURI) {
-		this.goblintInputURI = goblintInputURI;
+	public void setGoblintInput(URI goblintInput) {
+		this.goblintInput = goblintInput;
+	}
+
+    @OslcDescription("Goblint Output Identifier.")
+    @OslcOccurs(Occurs.ExactlyOne)
+    @OslcPropertyDefinition(Constants.GOBLINT_NAMESPACE + "id")
+    @OslcReadOnly
+    @OslcTitle("id")
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	@OslcDescription("Resource ready.")
+	@OslcOccurs(Occurs.ZeroOrOne)
+    @OslcPropertyDefinition(Constants.GOBLINT_NAMESPACE + "ready")
+    @OslcReadOnly
+    @OslcTitle("ready")
+    public boolean getReady() {
+		return ready;
+	}
+    
+	public void setReady(boolean b) {
+		this.ready = b;
+	}
+
+	@OslcDescription("Resource could not be generated.")
+    @OslcOccurs(Occurs.ZeroOrOne)
+    @OslcPropertyDefinition(Constants.GOBLINT_NAMESPACE + "failure")
+    @OslcReadOnly
+    @OslcTitle("failure")
+	public boolean getFailure() {
+		return failure;
+	}
+
+	public void setFailure(boolean failure) {
+		this.failure = failure;
 	}
 	
 }

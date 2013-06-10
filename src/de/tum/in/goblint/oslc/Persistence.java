@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 import javax.xml.datatype.DatatypeConfigurationException;
@@ -21,10 +23,10 @@ import com.hp.hpl.jena.util.FileUtils;
 
 public class Persistence {
 	
-	private final static TreeMap<Integer, GoblintInput> INPUT_MAP = new TreeMap<Integer, GoblintInput>();
-	
-	/*private final static TreeMap<Integer, GoblintOutput> OUTPUT_MAP = new TreeMap<Integer, GoblintOutput>();
-	 */
+	private final static Map<String, GoblintInput>   INPUT_URL_MAP = new TreeMap<String, GoblintInput>();
+	private final static Map<Integer, GoblintInput>  INPUT_MAP     = new HashMap<Integer, GoblintInput>();
+	private final static Map<Integer, GoblintOutput> OUTPUT_MAP    = new HashMap<Integer, GoblintOutput>();
+	 
 	
 	private Persistence(){
 		super();
@@ -43,9 +45,8 @@ public class Persistence {
                   SecurityException,
                   NoSuchMethodException
     {
-        final String fileName = createFileName(uriString);
 
-        final File file = new File(fileName);
+        final File file = new File(Paths.getPersistencePath() + File.separatorChar + "goblintOslcData.xml");
 
         if ((file.exists()) &&
             (file.isFile()) &&
@@ -95,7 +96,9 @@ public class Persistence {
                   InvocationTargetException,
                   FileNotFoundException
     {
-        final String fileName = createFileName(uriString);
+    	final String fileName = Paths.getPersistencePath() + File.separatorChar + "goblintOslcData.xml";
+    			
+        System.out.printf("Saving data to %s.\n",fileName);
 
         final GoblintInput[] inputs = getInputs();
 
@@ -111,22 +114,7 @@ public class Persistence {
         }
     }
 
-    private static String createFileName(final String uriString)
-            throws URISyntaxException
-    {
-        final URI uri = new URI(uriString);
-
-        final String host = uri.getHost();
-        final int    port = uri.getPort();
-        final String path = uri.getPath();
-
-        final String tmpDir = System.getProperty("java.io.tmpdir");
-
-        final String fileName = tmpDir + "/" + host + "_" + port + path.replace('/', '_').replace('\\', '_') + ".xml";
-
-        return fileName;
-    }
-
+    
     public static GoblintInput[] getInputs()
     {
         synchronized (INPUT_MAP)
@@ -143,8 +131,20 @@ public class Persistence {
         }
     }
 
+    public static GoblintInput getInput(final String identifier)
+    {
+        synchronized (INPUT_URL_MAP)
+        {
+            return INPUT_URL_MAP.get(identifier);
+        }
+    }
+
     public static void addInput(final GoblintInput input)
     {
+    	synchronized (INPUT_URL_MAP) {
+    		System.out.printf("url:%s\n",input.getAbout().toString());
+        	INPUT_URL_MAP.put(input.getAbout().toString(), input);			
+		}
         synchronized (INPUT_MAP)
         {
         	INPUT_MAP.put(input.getId(), input);
@@ -153,12 +153,43 @@ public class Persistence {
 
     public static GoblintInput deleteInput(final int identifier)
     {
-        synchronized (INPUT_MAP)
+    	synchronized (INPUT_MAP)
         {
             return INPUT_MAP.remove(identifier);
         }
     }
 
 
- 
+	public static void addOutput(GoblintOutput output) {
+        synchronized (OUTPUT_MAP)
+        {
+        	OUTPUT_MAP.put(output.getId(), output);
+        }		
+	}
+	
+	
+    public static GoblintOutput[] getOutputs()
+    {
+        synchronized (OUTPUT_MAP)
+        {
+            return OUTPUT_MAP.values().toArray(new GoblintOutput[OUTPUT_MAP.size()]);
+        }
+    }
+
+    public static GoblintOutput getOutput(final int identifier)
+    {
+        synchronized (OUTPUT_MAP)
+        {
+            return OUTPUT_MAP.get(identifier);
+        }
+    }
+
+    public static GoblintOutput deleteOutput(final int identifier)
+    {
+        synchronized (OUTPUT_MAP)
+        {
+            return OUTPUT_MAP.remove(identifier);
+        }
+    }
+
 }
