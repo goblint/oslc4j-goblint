@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="oslc4j-goblint" default="all">
+  
+  
+  <property file="oslc4j-goblint.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.oslc4j-core-2.1.0.classpath">
+    <pathelement location="${basedir}/lib/oslc4j-core-2.1.0.jar"/>
+  </path>
+  
+  
+  <!-- Application Server Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module oslc4j-goblint -->
+  
+  <dirname property="module.oslc4j-goblint.basedir" file="${ant.file}"/>
+  
+  
+  
+  <property name="compiler.args.oslc4j-goblint" value="-encoding UTF-8 -source 1.7 ${compiler.args}"/>
+  
+  <property name="oslc4j-goblint.output.dir" value="${module.oslc4j-goblint.basedir}/out/production/oslc4j-goblint"/>
+  <property name="oslc4j-goblint.testoutput.dir" value="${module.oslc4j-goblint.basedir}/out/test/oslc4j-goblint"/>
+  
+  <path id="oslc4j-goblint.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="oslc4j-goblint.module.production.classpath">
+    <pathelement location="${basedir}/lib/com.ibm.icu.base_4.0.1.v20090822.jar"/>
+    <pathelement location="${basedir}/lib/com.sun.xml.bind_2.2.0.v201105210647.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.4.jar"/>
+    <pathelement location="${basedir}/lib/javax.activation_1.1.0.v201108011116.jar"/>
+    <pathelement location="${basedir}/lib/javax.annotation_1.0.0.v20101115-0725.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet_3.0.0.v201112011016.jar"/>
+    <pathelement location="${basedir}/lib/javax.ws.rs_1.1.1.v20101004-1200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.bind_2.2.0.v201105210648.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.stream_1.0.1.v201004272200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml_1.3.4.v201005080400.jar"/>
+    <pathelement location="${basedir}/lib/jena-arq-2.9.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-core-2.7.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-iri-0.9.2.jar"/>
+    <pathelement location="${basedir}/lib/jena-tdb-0.9.1.jar"/>
+    <pathelement location="${basedir}/lib/oauth-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-consumer-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-httpclient4-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-provider-20090531.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.lang_2.3.0.v201005080501.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpclient_4.1.0.v201103311320.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpcore_4.1.0.v201101201700.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.log4j_1.2.15.v201012070815.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.xerces_2.8.0.v200803070308.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.api_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.jcl_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.log4j_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/oslc-java-client-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-query-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-trs-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-apache-httpclient-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-common-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-provider-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-server-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-core-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-jena-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-json4j-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-utils-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-wink-2.1.0.jar"/>
+    <path refid="library.oslc4j-core-2.1.0.classpath"/>
+  </path>
+  
+  <path id="oslc4j-goblint.runtime.production.module.classpath">
+    <pathelement location="${oslc4j-goblint.output.dir}"/>
+    <pathelement location="${basedir}/lib/com.ibm.icu.base_4.0.1.v20090822.jar"/>
+    <pathelement location="${basedir}/lib/com.sun.xml.bind_2.2.0.v201105210647.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.4.jar"/>
+    <pathelement location="${basedir}/lib/javax.activation_1.1.0.v201108011116.jar"/>
+    <pathelement location="${basedir}/lib/javax.annotation_1.0.0.v20101115-0725.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet_3.0.0.v201112011016.jar"/>
+    <pathelement location="${basedir}/lib/javax.ws.rs_1.1.1.v20101004-1200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.bind_2.2.0.v201105210648.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.stream_1.0.1.v201004272200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml_1.3.4.v201005080400.jar"/>
+    <pathelement location="${basedir}/lib/jena-arq-2.9.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-core-2.7.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-iri-0.9.2.jar"/>
+    <pathelement location="${basedir}/lib/jena-tdb-0.9.1.jar"/>
+    <pathelement location="${basedir}/lib/oauth-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-consumer-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-httpclient4-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-provider-20090531.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.lang_2.3.0.v201005080501.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpclient_4.1.0.v201103311320.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpcore_4.1.0.v201101201700.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.log4j_1.2.15.v201012070815.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.xerces_2.8.0.v200803070308.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.api_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.jcl_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.log4j_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/oslc-java-client-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-query-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-trs-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-apache-httpclient-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-common-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-provider-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-server-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-core-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-jena-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-json4j-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-utils-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-wink-2.1.0.jar"/>
+    <path refid="library.oslc4j-core-2.1.0.classpath"/>
+  </path>
+  
+  <path id="oslc4j-goblint.module.classpath">
+    <pathelement location="${oslc4j-goblint.output.dir}"/>
+    <pathelement location="${basedir}/lib/com.ibm.icu.base_4.0.1.v20090822.jar"/>
+    <pathelement location="${basedir}/lib/com.sun.xml.bind_2.2.0.v201105210647.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.4.jar"/>
+    <pathelement location="${basedir}/lib/javax.activation_1.1.0.v201108011116.jar"/>
+    <pathelement location="${basedir}/lib/javax.annotation_1.0.0.v20101115-0725.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet_3.0.0.v201112011016.jar"/>
+    <pathelement location="${basedir}/lib/javax.ws.rs_1.1.1.v20101004-1200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.bind_2.2.0.v201105210648.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.stream_1.0.1.v201004272200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml_1.3.4.v201005080400.jar"/>
+    <pathelement location="${basedir}/lib/jena-arq-2.9.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-core-2.7.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-iri-0.9.2.jar"/>
+    <pathelement location="${basedir}/lib/jena-tdb-0.9.1.jar"/>
+    <pathelement location="${basedir}/lib/oauth-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-consumer-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-httpclient4-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-provider-20090531.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.lang_2.3.0.v201005080501.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpclient_4.1.0.v201103311320.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpcore_4.1.0.v201101201700.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.log4j_1.2.15.v201012070815.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.xerces_2.8.0.v200803070308.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.api_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.jcl_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.log4j_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/oslc-java-client-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-query-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-trs-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-apache-httpclient-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-common-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-provider-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-server-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-core-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-jena-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-json4j-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-utils-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-wink-2.1.0.jar"/>
+    <path refid="library.oslc4j-core-2.1.0.classpath"/>
+  </path>
+  
+  <path id="oslc4j-goblint.runtime.module.classpath">
+    <pathelement location="${oslc4j-goblint.testoutput.dir}"/>
+    <pathelement location="${oslc4j-goblint.output.dir}"/>
+    <pathelement location="${basedir}/lib/com.ibm.icu.base_4.0.1.v20090822.jar"/>
+    <pathelement location="${basedir}/lib/com.sun.xml.bind_2.2.0.v201105210647.jar"/>
+    <pathelement location="${basedir}/lib/commons-codec-1.4.jar"/>
+    <pathelement location="${basedir}/lib/javax.activation_1.1.0.v201108011116.jar"/>
+    <pathelement location="${basedir}/lib/javax.annotation_1.0.0.v20101115-0725.jar"/>
+    <pathelement location="${basedir}/lib/javax.servlet_3.0.0.v201112011016.jar"/>
+    <pathelement location="${basedir}/lib/javax.ws.rs_1.1.1.v20101004-1200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.bind_2.2.0.v201105210648.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml.stream_1.0.1.v201004272200.jar"/>
+    <pathelement location="${basedir}/lib/javax.xml_1.3.4.v201005080400.jar"/>
+    <pathelement location="${basedir}/lib/jena-arq-2.9.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-core-2.7.1.jar"/>
+    <pathelement location="${basedir}/lib/jena-iri-0.9.2.jar"/>
+    <pathelement location="${basedir}/lib/jena-tdb-0.9.1.jar"/>
+    <pathelement location="${basedir}/lib/oauth-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-consumer-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-httpclient4-20090617.jar"/>
+    <pathelement location="${basedir}/lib/oauth-provider-20090531.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.lang_2.3.0.v201005080501.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpclient_4.1.0.v201103311320.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.httpcomponents.httpcore_4.1.0.v201101201700.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.log4j_1.2.15.v201012070815.jar"/>
+    <pathelement location="${basedir}/lib/org.apache.xerces_2.8.0.v200803070308.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.api_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.jcl_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/org.slf4j.log4j_1.6.4.v20120130-2120.jar"/>
+    <pathelement location="${basedir}/lib/oslc-java-client-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-query-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc-trs-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-client-apache-httpclient-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-common-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-json4j-provider-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/wink-server-1.2.1-incubating.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-core-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-jena-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-json4j-provider-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-utils-2.1.0.jar"/>
+    <pathelement location="${basedir}/lib/oslc4j-wink-2.1.0.jar"/>
+    <path refid="library.oslc4j-core-2.1.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.oslc4j-goblint">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.oslc4j-goblint">
+    <patternset refid="excluded.from.module.oslc4j-goblint"/>
+  </patternset>
+  
+  <path id="oslc4j-goblint.module.sourcepath">
+    <dirset dir="${module.oslc4j-goblint.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.oslc4j-goblint" depends="compile.module.oslc4j-goblint.production,compile.module.oslc4j-goblint.tests" description="Compile module oslc4j-goblint"/>
+  
+  <target name="compile.module.oslc4j-goblint.production" description="Compile module oslc4j-goblint; production classes">
+    <mkdir dir="${oslc4j-goblint.output.dir}"/>
+    <javac destdir="${oslc4j-goblint.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
+      <compilerarg line="${compiler.args.oslc4j-goblint}"/>
+      <bootclasspath refid="oslc4j-goblint.module.bootclasspath"/>
+      <classpath refid="oslc4j-goblint.module.production.classpath"/>
+      <src refid="oslc4j-goblint.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.oslc4j-goblint"/>
+    </javac>
+    
+    <copy todir="${oslc4j-goblint.output.dir}">
+      <fileset dir="${module.oslc4j-goblint.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.oslc4j-goblint.tests" depends="compile.module.oslc4j-goblint.production" description="compile module oslc4j-goblint; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.oslc4j-goblint" description="cleanup module">
+    <delete dir="${oslc4j-goblint.output.dir}"/>
+    <delete dir="${oslc4j-goblint.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.oslc4j-goblint" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.oslc4j-goblint" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.oslc4j-goblint" value="${basedir}/out/artifacts/oslc4j_goblint"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.oslc4j-goblint.war" value="${artifacts.temp.dir}/oslc4j-goblint.war"/>
+  </target>
+  
+  <target name="artifact.oslc4j-goblint" depends="init.artifacts, compile.module.oslc4j-goblint" description="Build &#39;oslc4j-goblint&#39; artifact">
+    <property name="artifact.temp.output.oslc4j-goblint" value="${artifacts.temp.dir}/oslc4j_goblint"/>
+    <mkdir dir="${artifact.temp.output.oslc4j-goblint}"/>
+    <zip destfile="${temp.jar.path.oslc4j-goblint.war}">
+      <zipfileset dir="${basedir}/WebContent"/>
+      <zipfileset file="${basedir}/WebContent/WEB-INF/web.xml" prefix="WEB-INF"/>
+      <zipfileset file="${basedir}/META-INF/MANIFEST.MF" prefix="META-INF"/>
+      <zipfileset dir="${oslc4j-goblint.output.dir}" prefix="WEB-INF/classes"/>
+      <zipfileset file="${basedir}/lib/com.ibm.icu.base_4.0.1.v20090822.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/com.sun.xml.bind_2.2.0.v201105210647.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/commons-codec-1.4.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.activation_1.1.0.v201108011116.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.annotation_1.0.0.v20101115-0725.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.servlet_3.0.0.v201112011016.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.xml.bind_2.2.0.v201105210648.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.xml.stream_1.0.1.v201004272200.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.xml_1.3.4.v201005080400.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jena-arq-2.9.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jena-core-2.7.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jena-iri-0.9.2.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/jena-tdb-0.9.1.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oauth-20090617.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oauth-consumer-20090617.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oauth-httpclient4-20090617.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oauth-provider-20090531.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.apache.commons.lang_2.3.0.v201005080501.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.apache.commons.logging_1.1.1.v201101211721.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.apache.httpcomponents.httpclient_4.1.0.v201103311320.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.apache.httpcomponents.httpcore_4.1.0.v201101201700.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.apache.log4j_1.2.15.v201012070815.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.apache.xerces_2.8.0.v200803070308.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.slf4j.api_1.6.4.v20120130-2120.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.slf4j.jcl_1.6.4.v20120130-2120.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/org.slf4j.log4j_1.6.4.v20120130-2120.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc-java-client-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc-query-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc-trs-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc4j-core-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc4j-jena-provider-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc4j-json4j-provider-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc4j-utils-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/oslc4j-wink-2.1.0.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/wink-client-1.2.1-incubating.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/wink-client-apache-httpclient-1.2.1-incubating.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/wink-common-1.2.1-incubating.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/wink-json4j-1.2.1-incubating.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/wink-json4j-provider-1.2.1-incubating.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/wink-server-1.2.1-incubating.jar" prefix="WEB-INF/lib"/>
+      <zipfileset file="${basedir}/lib/javax.ws.rs_1.1.1.v20101004-1200.jar" prefix="WEB-INF/lib"/>
+    </zip>
+    <copy file="${temp.jar.path.oslc4j-goblint.war}" tofile="${artifact.temp.output.oslc4j-goblint}/oslc4j-goblint.war"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.oslc4j-goblint" description="Build all artifacts">
+    <mkdir dir="${artifact.output.oslc4j-goblint}"/>
+    <copy todir="${artifact.output.oslc4j-goblint}">
+      <fileset dir="${artifact.temp.output.oslc4j-goblint}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

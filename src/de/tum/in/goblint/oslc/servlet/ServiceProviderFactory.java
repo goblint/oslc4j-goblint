@@ -33,7 +33,7 @@ public class ServiceProviderFactory {
                                                                                                                                ServiceProviderRegistryURIs.getUIURI(),
                                                                                                                                "OSLC Goblint Service Provider",
                                                                                                                                "Reference Implementation OSLC Goblint Service Provider",
-                                                                                                                               new Publisher("Kalmer", "TUM"),
+                                                                                                                               new Publisher("Goblint", "TUM"),
                                                                                                                                RESOURCE_CLASSES
         );
 

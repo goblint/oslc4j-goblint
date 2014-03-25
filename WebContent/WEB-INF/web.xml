@@ -19,22 +19,38 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>oslc4j-goblint</display-name>
   <context-param>
-  	<description>Scheme used for URI when registering ServiceProvider.  Can be overridden by System property of the same name.</description>
+    <param-name>org.eclipse.lyo.oslc4j.client.uiuri</param-name>
+    <param-value>http://localhost:8080/OSLC4JRegistry/OSLC4JUI</param-value>
+  </context-param>
+  <context-param>
+    <param-name>org.eclipse.lyo.oslc4j.client.registryuri</param-name>
+    <param-value>http://localhost:8080/OSLC4JRegistry/catalog/singleton</param-value>
+  </context-param>
+
+  <context-param>
   	<param-name>de.tum.in.goblint.oslc.servlet.scheme</param-name>
   	<param-value>http</param-value>
   </context-param>
-    <context-param>
-  	<description>Port used for URI when registering ServiceProvider.  Can be overridden by System property of the same name.</description>
+  <context-param>
+  	<param-name>org.eclipse.lyo.oslc4j.core.servlet.scheme</param-name>
+  	<param-value>http</param-value>
+  </context-param>
+  <context-param>
   	<param-name>de.tum.in.goblint.oslc.servlet.port</param-name>
   	<param-value>8080</param-value>
   </context-param>
+  <context-param>
+  	<param-name>org.eclipse.lyo.oslc4j.core.servlet.port</param-name>
+  	<param-value>8080</param-value>
+  </context-param>
+
   <listener>
-    <description>Listener for JAX-RS Servlet</description>
-    <listener-class>de.tum.in.goblint.oslc.servlet.ServletListener</listener-class>
-  </listener>
+      <description>Listener for JAX-RS Servlet</description>
+      <listener-class>de.tum.in.goblint.oslc.servlet.ServletListener</listener-class>
+    </listener>
   <servlet>
     <description>JAX-RS Tools Generated - Do not modify</description>
-    <servlet-name>JAX-RS Servlet</servlet-name>
+    <servlet-name>CLIENT</servlet-name>
     <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
     <init-param>
       <param-name>javax.ws.rs.Application</param-name>
@@ -43,9 +59,29 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>JAX-RS Servlet</servlet-name>
-    <url-pattern>/*</url-pattern>
+    <servlet-name>CLIENT</servlet-name>
+    <url-pattern>/goblint/*</url-pattern>
   </servlet-mapping>
+
+  <listener>
+    <description>Listener for JAX-RS Servlet</description>
+    <listener-class>org.eclipse.lyo.oslc4j.core.servlet.ServletListener</listener-class>
+  </listener>
+  <servlet>
+    <description>JAX-RS Tools Generated - Do not modify</description>
+    <servlet-name>REGISTRY</servlet-name>
+    <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+    <init-param>
+      <param-name>javax.ws.rs.Application</param-name>
+      <param-value>org.eclipse.lyo.oslc4j.core.resources.Oslc4JRegistryApplication</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>REGISTRY</servlet-name>
+    <url-pattern>/OSLC4JRegistry/*</url-pattern>
+  </servlet-mapping>
+
   <servlet>
     <servlet-name>restSdkAdmin</servlet-name>
     <servlet-class>org.apache.wink.server.internal.servlet.AdminServlet</servlet-class>

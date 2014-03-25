@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WebContent/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/WebContent" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/org.eclipse.lyo.core" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/com.ibm.icu.base_4.0.1.v20090822.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/com.sun.xml.bind_2.2.0.v201105210647.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/commons-codec-1.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.activation_1.1.0.v201108011116.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.annotation_1.0.0.v20101115-0725.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.servlet_3.0.0.v201112011016.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.ws.rs_1.1.1.v20101004-1200.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.xml.bind_2.2.0.v201105210648.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.xml.stream_1.0.1.v201004272200.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.xml_1.3.4.v201005080400.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jena-arq-2.9.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jena-core-2.7.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jena-iri-0.9.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jena-tdb-0.9.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oauth-20090617.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oauth-consumer-20090617.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oauth-httpclient4-20090617.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oauth-provider-20090531.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.apache.commons.lang_2.3.0.v201005080501.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.apache.commons.logging_1.1.1.v201101211721.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.apache.httpcomponents.httpclient_4.1.0.v201103311320.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.apache.httpcomponents.httpcore_4.1.0.v201101201700.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.apache.log4j_1.2.15.v201012070815.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.apache.xerces_2.8.0.v200803070308.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.slf4j.api_1.6.4.v20120130-2120.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.slf4j.jcl_1.6.4.v20120130-2120.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/org.slf4j.log4j_1.6.4.v20120130-2120.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc-java-client-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc-query-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc-trs-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/wink-client-1.2.1-incubating.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/wink-client-apache-httpclient-1.2.1-incubating.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/wink-common-1.2.1-incubating.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/wink-json4j-1.2.1-incubating.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/wink-json4j-provider-1.2.1-incubating.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/wink-server-1.2.1-incubating.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc4j-core-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc4j-jena-provider-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc4j-json4j-provider-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc4j-utils-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/oslc4j-wink-2.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/lib/org.eclipse.lyo.oslc4j.core/src/main/java" />
+          <root url="file://$MODULE_DIR$/lib/org.eclipse.lyo.oslc4j.core/src/test/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.core.trs/src/main/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.core.query/src/main/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.core.query/src/test/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.core.utils/src/main/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.core.utils/src/test/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.core/src/main/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.core/src/test/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.test/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.wink/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.registry/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.test.test/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.stockquote/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.test.common/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.codegenerator/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.provider.jena/src/main/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.provider.jena/src/test/java/org/eclipse/lyo/oslc4j/core/test/customnamespace" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.provider.jena/src/test/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.provider.json4j/src/main/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.provider.json4j/src/test/java" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.stockquote.test/src" />
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.stockquote.common/src" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="oslc4j-core-2.1.0" level="project" />
+  </component>
+</module>
+
