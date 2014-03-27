@@ -1,37 +1,26 @@
 package de.tum.in.goblint.oslc;
 
+import de.tum.in.goblint.oslc.definitions.*;
+import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
+
+import javax.xml.datatype.DatatypeConfigurationException;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
-
-import javax.xml.datatype.DatatypeConfigurationException;
-
-import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
-import org.eclipse.lyo.oslc4j.provider.jena.JenaModelHelper;
-
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.RDFWriter;
-import com.hp.hpl.jena.util.FileUtils;
 
 public class Persistence {
-	
-	private final static Map<String, GoblintInput>   INPUT_URL_MAP = new TreeMap<String, GoblintInput>();
-	private final static Map<Integer, GoblintInput>  INPUT_MAP     = new HashMap<Integer, GoblintInput>();
-	private final static Map<Integer, GoblintOutput> OUTPUT_MAP    = new HashMap<Integer, GoblintOutput>();
-	 
-	
-	private Persistence(){
-		super();
-	}
-	
+	private static Map<Integer, ConfFileAsset>                confFileAssets                = new HashMap<>();
+    private static Map<Integer, SourceFolderAsset>            sourceFolderAssets            = new HashMap<>();
+    private static Map<Integer, StoredInvariantAsset>         storedInvariantAssets         = new HashMap<>();
+    private static Map<Integer, GoblintResultWarning>         goblintResultWarnings         = new HashMap<>();
+    private static Map<Integer, GoblintResultXML>             goblintResultXML              = new HashMap<>();
+    private static Map<Integer, GoblintResultHTML>            goblintResultHTML             = new HashMap<>();
+    private static Map<Integer, GoblintResultStoredInvariant> goblintResultStoredInvariants = new HashMap<>();
+    private static Map<Integer, GoblintAnalysisJob>           goblintAnalysisJobs           = new HashMap<>();
+
 
     public static boolean load(final String uriString)
            throws DatatypeConfigurationException,
@@ -52,34 +41,34 @@ public class Persistence {
             (file.isFile()) &&
             (file.canRead()))
         {
-            final Model model = ModelFactory.createDefaultModel();
-
-            model.read(new FileInputStream(file),
-                       null,
-                       FileUtils.langXMLAbbrev);
-
-            final Object[] resources = JenaModelHelper.fromJenaModel(model,
-                                                                     GoblintInput.class);
-
-            synchronized(INPUT_MAP)
-            {
-            	INPUT_MAP.clear();
-
-                if (resources != null)
-                {
-                    for (final Object resource : resources)
-                    {
-                        if (resource instanceof GoblintInput)
-                        {
-                            final GoblintInput input = (GoblintInput) resource;
-
-                            final int identifier = input.getId();
-
-                            INPUT_MAP.put(identifier, input);
-                        }
-                    }
-                }
-            }
+//            final Model model = ModelFactory.createDefaultModel();
+//
+//            model.read(new FileInputStream(file),
+//                       null,
+//                       FileUtils.langXMLAbbrev);
+//
+//            final Object[] resources = JenaModelHelper.fromJenaModel(model,
+//                                                                     GoblintInput.class);
+//
+//            synchronized(INPUT_MAP)
+//            {
+//            	INPUT_MAP.clear();
+//
+//                if (resources != null)
+//                {
+//                    for (final Object resource : resources)
+//                    {
+//                        if (resource instanceof GoblintInput)
+//                        {
+//                            final GoblintInput input = (GoblintInput) resource;
+//
+//                            final int identifier = input.getId();
+//
+//                            INPUT_MAP.put(identifier, input);
+//                        }
+//                    }
+//                }
+//            }
 
             return true;
         }
@@ -100,96 +89,114 @@ public class Persistence {
     			
         System.out.printf("Saving data to %s.\n",fileName);
 
-        final GoblintInput[] inputs = getInputs();
-
-        final Model model = JenaModelHelper.createJenaModel(inputs);
-
-        if (model != null)
-        {
-            final RDFWriter writer = model.getWriter(FileUtils.langXMLAbbrev);
-
-            writer.setProperty("showXmlDeclaration", "true");
-
-            writer.write(model, new FileOutputStream(fileName), null);
-        }
-    }
-
-    
-    public static GoblintInput[] getInputs()
-    {
-        synchronized (INPUT_MAP)
-        {
-            return INPUT_MAP.values().toArray(new GoblintInput[INPUT_MAP.size()]);
-        }
-    }
-
-    public static GoblintInput getInput(final int identifier)
-    {
-        synchronized (INPUT_MAP)
-        {
-            return INPUT_MAP.get(identifier);
-        }
-    }
-
-    public static GoblintInput getInput(final String identifier)
-    {
-        synchronized (INPUT_URL_MAP)
-        {
-            return INPUT_URL_MAP.get(identifier);
-        }
-    }
-
-    public static void addInput(final GoblintInput input)
-    {
-    	synchronized (INPUT_URL_MAP) {
-    		System.out.printf("url:%s\n",input.getAbout().toString());
-        	INPUT_URL_MAP.put(input.getAbout().toString(), input);			
-		}
-        synchronized (INPUT_MAP)
-        {
-        	INPUT_MAP.put(input.getId(), input);
-        }
-    }
-
-    public static GoblintInput deleteInput(final int identifier)
-    {
-    	synchronized (INPUT_MAP)
-        {
-            return INPUT_MAP.remove(identifier);
-        }
+//        final GoblintInput[] inputs = getInputs();
+//
+//        final Model model = JenaModelHelper.createJenaModel(inputs);
+//
+//        if (model != null)
+//        {
+//            final RDFWriter writer = model.getWriter(FileUtils.langXMLAbbrev);
+//
+//            writer.setProperty("showXmlDeclaration", "true");
+//
+//            writer.write(model, new FileOutputStream(fileName), null);
+//        }
     }
 
 
-	public static void addOutput(GoblintOutput output) {
-        synchronized (OUTPUT_MAP)
-        {
-        	OUTPUT_MAP.put(output.getId(), output);
-        }		
-	}
-	
-	
-    public static GoblintOutput[] getOutputs()
-    {
-        synchronized (OUTPUT_MAP)
-        {
-            return OUTPUT_MAP.values().toArray(new GoblintOutput[OUTPUT_MAP.size()]);
-        }
+    public static void addConfFile(ConfFileAsset input) {
+        confFileAssets.put(input.id, input);
     }
 
-    public static GoblintOutput getOutput(final int identifier)
-    {
-        synchronized (OUTPUT_MAP)
-        {
-            return OUTPUT_MAP.get(identifier);
-        }
+    public static ConfFileAsset[] getConfFileAssets() {
+        return (ConfFileAsset[]) confFileAssets.values().toArray();
     }
 
-    public static GoblintOutput deleteOutput(final int identifier)
-    {
-        synchronized (OUTPUT_MAP)
-        {
-            return OUTPUT_MAP.remove(identifier);
-        }
+    public static ConfFileAsset getConfFileAssets(int inputId) {
+        return confFileAssets.get(inputId);
     }
 
+    public static void addSourceFolder(SourceFolderAsset input) {
+        sourceFolderAssets.put(input.id, input);
+    }
+
+    public static SourceFolderAsset[] getSourceFolderAssets() {
+        return (SourceFolderAsset[]) sourceFolderAssets.values().toArray();
+    }
+
+    public static ConfFileAsset getSourceFolderAssets(int inputId) {
+        return confFileAssets.get(inputId);
+    }
+
+    public static void addStoredInvariant(StoredInvariantAsset input) {
+        storedInvariantAssets.put(input.id, input);
+    }
+
+    public static StoredInvariantAsset[] getStoredInvariantAssets() {
+        return (StoredInvariantAsset[]) storedInvariantAssets.values().toArray();
+    }
+
+    public static StoredInvariantAsset getStoredInvariantAssets(int inputId) {
+        return storedInvariantAssets.get(inputId);
+    }
+
+    public static void addGoblintResultWarning(GoblintResultWarning input) {
+        goblintResultWarnings.put(input.id, input);
+    }
+
+    public static GoblintResultWarning[] getGoblintResultWarnings() {
+        return (GoblintResultWarning[]) goblintResultWarnings.values().toArray();
+    }
+
+    public static GoblintResultWarning getGoblintResultWarnings(int inputId) {
+        return goblintResultWarnings.get(inputId);
+    }
+
+    public static void addGoblintResultXML(GoblintResultXML input) {
+        goblintResultXML.put(input.id, input);
+    }
+
+    public static GoblintResultXML[] getGoblintResultXML() {
+        return (GoblintResultXML[]) goblintResultXML.values().toArray();
+    }
+
+    public static GoblintResultXML getGoblintResultXML(int inputId) {
+        return goblintResultXML.get(inputId);
+    }
+
+    public static void addGoblintResultHTML(GoblintResultHTML input) {
+        goblintResultHTML.put(input.id, input);
+    }
+
+    public static GoblintResultHTML[] getGoblintResultHTML() {
+        return (GoblintResultHTML[]) goblintResultHTML.values().toArray();
+    }
+
+    public static GoblintResultHTML getGoblintResultHTML(int inputId) {
+        return goblintResultHTML.get(inputId);
+    }
+
+    public static void addGoblintResultStoredInvariants(GoblintResultStoredInvariant input) {
+        goblintResultStoredInvariants.put(input.id, input);
+    }
+
+    public static GoblintResultStoredInvariant[] getGoblintResultStoredInvariants() {
+        return (GoblintResultStoredInvariant[]) goblintResultStoredInvariants.values().toArray();
+    }
+
+    public static GoblintResultStoredInvariant getGoblintResultStoredInvariants(int inputId) {
+        return goblintResultStoredInvariants.get(inputId);
+    }
+
+    public static GoblintAnalysisJob[] getGoblintAnalysisJobs() {
+        return (GoblintAnalysisJob[]) goblintAnalysisJobs.values().toArray();
+    }
+
+    public static GoblintAnalysisJob getGoblintAnalysisJobs(int inputId) {
+        return goblintAnalysisJobs.get(inputId);
+    }
+
+    public static void addGoblintAnalysisJobs(GoblintAnalysisJob input) {
+        goblintAnalysisJobs.put(input.id, input);
+    }
 }
