@@ -3,6 +3,7 @@ package de.tum.in.goblint.oslc.definitions;
 import de.tum.in.goblint.oslc.Constants;
 import org.eclipse.lyo.oslc4j.core.annotation.*;
 import org.eclipse.lyo.oslc4j.core.model.Occurs;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,6 +21,7 @@ public class GoblintResultXML extends TestResult {
     @OslcPropertyDefinition("goblint:goblintResultXML")
     @OslcTitle("goblintResultXML")
     @OslcOccurs(Occurs.ExactlyOne)
+    @OslcValueType(ValueType.Resource)
     @OslcDescription("Analysis result in XML form.")
     public URI getGoblintResultXML() {
         return goblintResultXML;

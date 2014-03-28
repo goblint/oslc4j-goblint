@@ -3,7 +3,7 @@ package de.tum.in.goblint.oslc.definitions;
 import org.eclipse.lyo.oslc4j.core.annotation.*;
 import org.eclipse.lyo.oslc4j.core.model.AbstractResource;
 import org.eclipse.lyo.oslc4j.core.model.Occurs;
-import org.eclipse.lyo.oslc4j.core.model.XMLLiteral;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import java.net.URI;
 import java.text.SimpleDateFormat;
@@ -14,10 +14,10 @@ import java.util.List;
 abstract public class OSLCObject extends AbstractResource {
     public int id;
     protected URI fIdentifier;
-    protected XMLLiteral fTitle;
-    protected XMLLiteral fDescription;
-    protected List<Object> fCreator;
-    protected List<Object> fContributor;
+    protected String fTitle;
+    protected String fDescription;
+    protected List<String> fCreator;
+    protected List<String> fContributor;
     protected String fCreated;
     protected String fModified;
     protected List<URI> fServiceProvider;
@@ -25,9 +25,9 @@ abstract public class OSLCObject extends AbstractResource {
 
     public OSLCObject() {
         super();
-        setTitle(new XMLLiteral("New Asset"));
-        setCreator(new ArrayList<>());
-        setContributor(new ArrayList<>());
+        setTitle(new String("New Asset"));
+        setCreator(new ArrayList<String>());
+        setContributor(new ArrayList<String>());
         setCreated(new SimpleDateFormat("yyyy-mm-ddThh:mm:ss").format(Calendar.getInstance().getTime()));
     }
 
@@ -44,7 +44,8 @@ abstract public class OSLCObject extends AbstractResource {
     @OslcTitle("title")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcDescription("Short name identifying a resource, often used as an abbreviated identifier for presentation to end-users. SHOULD include only content that is valid inside an XHTML element.")
-    public XMLLiteral getTitle() {
+    @OslcValueType(ValueType.XMLLiteral)
+    public String getTitle() {
         return fTitle;
     }
 
@@ -52,7 +53,7 @@ abstract public class OSLCObject extends AbstractResource {
     @OslcTitle("description")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("Descriptive text (reference: Dublin Core) about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML element.")
-    public XMLLiteral getDescription() {
+    public String getDescription() {
         return fDescription;
     }
 
@@ -60,7 +61,7 @@ abstract public class OSLCObject extends AbstractResource {
     @OslcTitle("creator")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("Creator or creators of resource (reference: Dublin Core). It is likely that the target resource will be a  foaf:Person but that is not necessarily the case")
-    public List<Object> getCreator() {
+    public List<String> getCreator() {
         return fCreator;
     }
 
@@ -68,7 +69,7 @@ abstract public class OSLCObject extends AbstractResource {
     @OslcTitle("contributor")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("The person(s) who are responsible for this asset. (reference: Dublin Core). It is likely that the target resource will be a foaf:Person but that is not necessarily the case.")
-    public List<Object> getContributor() {
+    public List<String> getContributor() {
         return fContributor;
     }
 
@@ -110,19 +111,19 @@ abstract public class OSLCObject extends AbstractResource {
         this.fIdentifier = fIdentifier;
     }
 
-    public void setTitle(XMLLiteral fTitle) {
+    public void setTitle(String fTitle) {
         this.fTitle = fTitle;
     }
 
-    public void setDescription(XMLLiteral fDescription) {
+    public void setDescription(String fDescription) {
         this.fDescription = fDescription;
     }
 
-    public void setCreator(List<Object> fCreator) {
+    public void setCreator(List<String> fCreator) {
         this.fCreator = fCreator;
     }
 
-    public void setContributor(List<Object> fContributor) {
+    public void setContributor(List<String> fContributor) {
         this.fContributor = fContributor;
     }
 

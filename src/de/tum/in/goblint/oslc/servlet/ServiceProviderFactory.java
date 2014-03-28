@@ -1,50 +1,48 @@
 package de.tum.in.goblint.oslc.servlet;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
+import de.tum.in.goblint.oslc.Constants;
+import de.tum.in.goblint.oslc.resources.GoblintResource;
 import org.eclipse.lyo.oslc4j.client.ServiceProviderRegistryURIs;
 import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
-import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 import org.eclipse.lyo.oslc4j.core.model.PrefixDefinition;
 import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 
-import de.tum.in.goblint.oslc.Constants;
-import de.tum.in.goblint.oslc.resources.GoblintResource;
-
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 public class ServiceProviderFactory {
     private static Class<?>[] RESOURCE_CLASSES =
-    {
-        GoblintResource.class
-    };
+            {
+                    GoblintResource.class
+            };
 
-    private ServiceProviderFactory()
-    {
+    private ServiceProviderFactory() {
         super();
     }
 
     public static ServiceProvider createServiceProvider(final String baseURI)
-           throws OslcCoreApplicationException, URISyntaxException
-    {
+            throws OslcCoreApplicationException, URISyntaxException {
         final ServiceProvider serviceProvider = org.eclipse.lyo.oslc4j.core.model.ServiceProviderFactory.createServiceProvider(baseURI,
-                                                                                                                               ServiceProviderRegistryURIs.getUIURI(),
-                                                                                                                               "OSLC Goblint Service Provider",
-                                                                                                                               "Reference Implementation OSLC Goblint Service Provider",
-                                                                                                                               new Publisher("Goblint", "TUM"),
-                                                                                                                               RESOURCE_CLASSES
+                ServiceProviderRegistryURIs.getUIURI(),
+                "OSLC Goblint Service Provider",
+                "Reference Implementation OSLC Goblint Service Provider",
+                new Publisher("Goblint", "TUM"),
+                RESOURCE_CLASSES
         );
 
         final PrefixDefinition[] prefixDefinitions =
-        {
-            new PrefixDefinition(OslcConstants.DCTERMS_NAMESPACE_PREFIX,   new URI(OslcConstants.DCTERMS_NAMESPACE)),
-            new PrefixDefinition(OslcConstants.OSLC_CORE_NAMESPACE_PREFIX, new URI(OslcConstants.OSLC_CORE_NAMESPACE)),
-            new PrefixDefinition(OslcConstants.RDF_NAMESPACE_PREFIX,       new URI(OslcConstants.RDF_NAMESPACE)),
-            new PrefixDefinition(OslcConstants.RDFS_NAMESPACE_PREFIX,      new URI(OslcConstants.RDFS_NAMESPACE)),
-            new PrefixDefinition(Constants.GOBLINT_NAMESPACE_PREFIX,       new URI(Constants.GOBLINT_NAMESPACE)),
-        };
+                {
+                        new PrefixDefinition("dcterms", new URI("http://purl.org/dc/terms/")),
+                        new PrefixDefinition("rdf", new URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#")),
+                        new PrefixDefinition("rdfs", new URI("http://www.w3.org/2000/01/rdf-schema#")),
+                        new PrefixDefinition("oslc", new URI("http://open-services.net/ns/core#")),
+                        new PrefixDefinition("oslc-qm", new URI("http://open-services.net/ns/qm#")),
+                        new PrefixDefinition("oslc-asset", new URI("http://open-services.net/ns/asset#")),
+                        new PrefixDefinition("goblint", new URI(Constants.GOBLINT_NAMESPACE)),
+
+                };
 
         serviceProvider.setPrefixDefinitions(prefixDefinitions);
 

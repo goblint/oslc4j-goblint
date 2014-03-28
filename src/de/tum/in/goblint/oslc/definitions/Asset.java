@@ -3,7 +3,6 @@ package de.tum.in.goblint.oslc.definitions;
 import de.tum.in.goblint.oslc.Constants;
 import org.eclipse.lyo.oslc4j.core.annotation.*;
 import org.eclipse.lyo.oslc4j.core.model.Occurs;
-import org.eclipse.lyo.oslc4j.core.model.XMLLiteral;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,29 +14,29 @@ import java.util.List;
 public class Asset extends OSLCObject {
     private String fGuid;
     private String fVersion;
-    private Object fRelationshipType;
-    private List<Object> fRelation;
+    private String fRelationshipType;
+    private List<String> fRelation;
     private URI fArtifactFactory;
-    private List<Object> fArtifact;
+    private List<String> fArtifact;
     private List<String> fTag;
     private String fSerialNumber;
     private String fModel;
     private String fManufacturer;
-    private XMLLiteral fAbstract;
-    private List<Object> fCategorization;
-    private Object fState;
+    private String fAbstract;
+    private List<String> fCategorization;
+    private String fState;
     private URI fType;
 
     public Asset() throws URISyntaxException {
         super();
-        setRelation(new ArrayList<>());
-        setArtifact(new ArrayList<>());
+        setRelation(new ArrayList<String>());
+        setArtifact(new ArrayList<String>());
         setTag(new ArrayList<String>());
-        setCategorization(new ArrayList<>());
+        setCategorization(new ArrayList<String>());
         addType(new URI(Constants.GOBLINT_NAMESPACE + "Asset"));
     }
 
-    @OslcPropertyDefinition("oslc_asset:guid")
+    @OslcPropertyDefinition("oslc-asset:guid")
     @OslcTitle("guid")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription(" An identifier for the asset. Assigned by the service provider when a resource is created. Different versions of the same asset will share the same identifier.")
@@ -45,7 +44,7 @@ public class Asset extends OSLCObject {
         return fGuid;
     }
 
-    @OslcPropertyDefinition("oslc_asset:version")
+    @OslcPropertyDefinition("oslc-asset:version")
     @OslcTitle("version")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The version of the asset. Possible values may include ‘1.0’, ‘2.0’, etc.")
@@ -57,7 +56,7 @@ public class Asset extends OSLCObject {
     @OslcTitle("abstract")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("Short description (reference: Dublin Core) or often a single line summary of the resource")
-    public XMLLiteral getAbstract() {
+    public String getAbstract() {
         return fAbstract;
     }
 
@@ -69,23 +68,23 @@ public class Asset extends OSLCObject {
         return fType;
     }
 
-    @OslcPropertyDefinition("oslc_asset:state")
+    @OslcPropertyDefinition("oslc-asset:state")
     @OslcTitle("state")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("Used to indicate the state of the asset based on values defined by the service provider. This specification does not define the resource for this property, however it should contain a dcterms:title property.")
-    public Object getState() {
+    public String getState() {
         return fState;
     }
 
-    @OslcPropertyDefinition("oslc_asset:categorization")
+    @OslcPropertyDefinition("oslc-asset:categorization")
     @OslcTitle("categorization")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("A categorization to classify an asset. The category schema values are defined by the service provider. This specification does not define the resource for this property, however it should contain a dcterms:title property.")
-    public List<Object> getCategorization() {
+    public List<String> getCategorization() {
         return fCategorization;
     }
 
-    @OslcPropertyDefinition("oslc_asset:manufacturer")
+    @OslcPropertyDefinition("oslc-asset:manufacturer")
     @OslcTitle("manufacturer")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The name of the asset manufacturer.")
@@ -93,7 +92,7 @@ public class Asset extends OSLCObject {
         return fManufacturer;
     }
 
-    @OslcPropertyDefinition("oslc_asset:model")
+    @OslcPropertyDefinition("oslc-asset:model")
     @OslcTitle("model")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The value of the asset model.")
@@ -101,7 +100,7 @@ public class Asset extends OSLCObject {
         return fModel;
     }
 
-    @OslcPropertyDefinition("oslc_asset:serialNumber")
+    @OslcPropertyDefinition("oslc-asset:serialNumber")
     @OslcTitle("serialNumber")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The serial number assigned by the asset manufacturer.")
@@ -109,7 +108,7 @@ public class Asset extends OSLCObject {
         return fSerialNumber;
     }
 
-    @OslcPropertyDefinition("oslc_asset:tag")
+    @OslcPropertyDefinition("oslc-asset:tag")
     @OslcTitle("tag")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("Specifies the asset tag value for an Asset. Asset tags are typically human readable labels. For hardware assets, these tags are durable, securely attached to equipment, and may also be readable by barcode and/or RFID.")
@@ -117,15 +116,15 @@ public class Asset extends OSLCObject {
         return fTag;
     }
 
-    @OslcPropertyDefinition("oslc_asset:artifact")
+    @OslcPropertyDefinition("oslc-asset:artifact")
     @OslcTitle("artifact")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("An Artifact fragment contained in this Asset resource.")
-    public List<Object> getArtifact() {
+    public List<String> getArtifact() {
         return fArtifact;
     }
 
-    @OslcPropertyDefinition("oslc_asset:artifactFactory")
+    @OslcPropertyDefinition("oslc-asset:artifactFactory")
     @OslcTitle("artifactFactory")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcDescription("Resource URI used to post new artifacts to the asset.")
@@ -137,15 +136,15 @@ public class Asset extends OSLCObject {
     @OslcTitle("relation")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("This relationship is loosely coupled and has no specific meaning. Details about this relationship may be included in a reified statement.")
-    public List<Object> getRelation() {
+    public List<String> getRelation() {
         return fRelation;
     }
 
-    @OslcPropertyDefinition("oslc_asset:relationshipType")
+    @OslcPropertyDefinition("oslc-asset:relationshipType")
     @OslcTitle("relationshipType")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The type of this relationship from the perspective of the dcterms:relation resource based on values defined by the service provider. This specification does not define the resource for this property, however it should contain a dcterms:title property.")
-    public Object getRelationshipType() {
+    public String getRelationshipType() {
         return fRelationshipType;
     }
 
@@ -157,11 +156,11 @@ public class Asset extends OSLCObject {
         this.fVersion = fVersion;
     }
 
-    public void setRelationshipType(Object fRelationshipType) {
+    public void setRelationshipType(String fRelationshipType) {
         this.fRelationshipType = fRelationshipType;
     }
 
-    public void setRelation(List<Object> fRelation) {
+    public void setRelation(List<String> fRelation) {
         this.fRelation = fRelation;
     }
 
@@ -169,7 +168,7 @@ public class Asset extends OSLCObject {
         this.fArtifactFactory = fArtifactFactory;
     }
 
-    public void setArtifact(List<Object> fArtifact) {
+    public void setArtifact(List<String> fArtifact) {
         this.fArtifact = fArtifact;
     }
 
@@ -189,15 +188,15 @@ public class Asset extends OSLCObject {
         this.fManufacturer = fManufacturer;
     }
 
-    public void setAbstract(XMLLiteral fAbstract) {
+    public void setAbstract(String fAbstract) {
         this.fAbstract = fAbstract;
     }
 
-    public void setCategorization(List<Object> fCategorization) {
+    public void setCategorization(List<String> fCategorization) {
         this.fCategorization = fCategorization;
     }
 
-    public void setState(Object fState) {
+    public void setState(String fState) {
         this.fState = fState;
     }
 

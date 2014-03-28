@@ -18,10 +18,6 @@
  *******************************************************************************/
 package org.eclipse.lyo.oslc4j.core.resources;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-
 import org.eclipse.lyo.oslc4j.core.annotation.OslcDialog;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcQueryCapability;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcService;
@@ -31,8 +27,12 @@ import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
 import org.eclipse.lyo.oslc4j.core.servlet.ServiceProviderCatalogSingleton;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
 @OslcService(OslcConstants.OSLC_CORE_DOMAIN)
-@Path("catalog")
+@Path("OSLC4JRegistry/catalog")
 public class ServiceProviderCatalogResource
 {
     @OslcDialog

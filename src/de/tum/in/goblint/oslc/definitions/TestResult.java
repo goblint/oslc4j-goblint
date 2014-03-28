@@ -23,7 +23,7 @@ public class TestResult extends OSLCObject {
         addType(new URI("http://open-services.net/ns/qm#TestResult"));
     }
 
-    @OslcPropertyDefinition("oslc_qm:status")
+    @OslcPropertyDefinition("oslc-qm:status")
     @OslcTitle("status")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("Used to indicate the state of the Test Result based on values defined by the service provider. Most often a read-only property.")
@@ -31,41 +31,41 @@ public class TestResult extends OSLCObject {
         return status;
     }
 
-    @OslcPropertyDefinition("oslc_qm:affectedByChangeRequest")
+    @OslcPropertyDefinition("oslc-qm:affectedByChangeRequest")
     @OslcTitle("affectedByChangeRequest")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("Change request that affects the Test Result. It is likely that the target resource will be an oslc_cm:ChangeRequest but that is not necessarily the case.")
     public List<URI> getAffectedByChangeRequest(){
         return affectedByChangeRequest;
     }
-    @OslcPropertyDefinition("oslc_qm:executesTestScript")
+    @OslcPropertyDefinition("oslc-qm:executesTestScript")
     @OslcTitle("executesTestScript")
     @OslcOccurs(Occurs.ZeroOrMany)
-    @OslcDescription("Test Script executed to produce the Test Result. It is likely that the target resource will be an oslc_qm:TestScript but that is not necessarily the case.")
+    @OslcDescription("Test Script executed to produce the Test Result. It is likely that the target resource will be an oslc-qm:TestScript but that is not necessarily the case.")
     public List<URI> getExecutesTestScript(){
         return executesTestScript;
     }
 
-    @OslcPropertyDefinition("oslc_qm:producedByTestExecutionRecord")
+    @OslcPropertyDefinition("oslc-qm:producedByTestExecutionRecord")
     @OslcTitle("producedByTestExecutionRecord")
     @OslcOccurs(Occurs.ZeroOrMany)
-    @OslcDescription("Test Execution Record that the Test Result was produced by. It is likely that the target resource will be an oslc_qm:TestExecutionRecord but that is not necessarily the case.")
+    @OslcDescription("Test Execution Record that the Test Result was produced by. It is likely that the target resource will be an oslc-qm:TestExecutionRecord but that is not necessarily the case.")
     public List<URI> getProducedByTestExecutionRecord(){
         return producedByTestExecutionRecord;
     }
 
-    @OslcPropertyDefinition("oslc_qm:reportsOnTestCase")
+    @OslcPropertyDefinition("oslc-qm:reportsOnTestCase")
     @OslcTitle("reportsOnTestCase")
     @OslcOccurs(Occurs.ExactlyOne)
-    @OslcDescription("Test Case that the Test Result reports on. It is likely that the target resource will be an oslc_qm:TestCase but that is not necessarily the case.")
+    @OslcDescription("Test Case that the Test Result reports on. It is likely that the target resource will be an oslc-qm:TestCase but that is not necessarily the case.")
     public URI getReportsOnTestCase(){
         return reportsOnTestCase;
     }
 
-    @OslcPropertyDefinition("oslc_qm:reportsOnTestPlan")
+    @OslcPropertyDefinition("oslc-qm:reportsOnTestPlan")
     @OslcTitle("reportsOnTestPlan")
     @OslcOccurs(Occurs.ZeroOrMany)
-    @OslcDescription("Test Plan that the Test Result reports on. It is likely that the target resource will be an oslc_qm:TestPlan but that is not necessarily the case.")
+    @OslcDescription("Test Plan that the Test Result reports on. It is likely that the target resource will be an oslc-qm:TestPlan but that is not necessarily the case.")
     public List<URI> getReportsOnTestPlan(){
         return reportsOnTestPlan;
     }

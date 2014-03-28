@@ -3,6 +3,7 @@ package de.tum.in.goblint.oslc.definitions;
 import de.tum.in.goblint.oslc.Constants;
 import org.eclipse.lyo.oslc4j.core.annotation.*;
 import org.eclipse.lyo.oslc4j.core.model.Occurs;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -21,6 +22,7 @@ public class GoblintResultStoredInvariant extends TestResult {
     @OslcTitle("goblintResultStoredInvariantAsset")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcDescription("Analysis result in stored invariant form.")
+    @OslcValueType(ValueType.LocalResource)
     public Asset getGoblintResultStoredInvariantAsset() {
         return goblintResultStoredInvariantAsset;
     }

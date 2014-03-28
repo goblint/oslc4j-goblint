@@ -3,6 +3,7 @@ package de.tum.in.goblint.oslc.definitions;
 import de.tum.in.goblint.oslc.Constants;
 import org.eclipse.lyo.oslc4j.core.annotation.*;
 import org.eclipse.lyo.oslc4j.core.model.Occurs;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,7 +11,7 @@ import java.net.URISyntaxException;
 @OslcNamespace(Constants.GOBLINT_NAMESPACE)
 @OslcResourceShape(title = "Plain folder asset", describes = "goblint:StoredInvariantAsset")
 public class StoredInvariantAsset extends Asset {
-    private URI storedInvariantFileURL;
+    private URI storedInvariantURI;
 
     public StoredInvariantAsset() throws URISyntaxException {
         super();
@@ -21,11 +22,12 @@ public class StoredInvariantAsset extends Asset {
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcReadOnly
     @OslcDescription("A URI to a the stored invariant file.")
-    public URI getStoredInvariantFileURL() {
-        return storedInvariantFileURL;
+    @OslcValueType(ValueType.Resource)
+    public URI getStoredInvariantURI() {
+        return storedInvariantURI;
     }
 
-    public void setStoredInvariantFileURL(URI storedInvariant) {
-        this.storedInvariantFileURL = storedInvariant;
+    public void setStoredInvariantURI(URI storedInvariant) {
+        this.storedInvariantURI = storedInvariant;
     }
 }

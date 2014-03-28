@@ -350,7 +350,9 @@
           <root url="jar://$MODULE_DIR$/lib/oslc4j-core-2.1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/org.eclipse.lyo.core/org.eclipse.lyo.oslc4j.core/src/main/java" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">

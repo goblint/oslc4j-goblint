@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,7 @@ public class Persistence {
 //                       null,
 //                       FileUtils.langXMLAbbrev);
 //
-//            final Object[] resources = JenaModelHelper.fromJenaModel(model,
+//            final Collection<Object> resources = JenaModelHelper.fromJenaModel(model,
 //                                                                     GoblintInput.class);
 //
 //            synchronized(INPUT_MAP)
@@ -89,7 +90,7 @@ public class Persistence {
     			
         System.out.printf("Saving data to %s.\n",fileName);
 
-//        final GoblintInput[] inputs = getInputs();
+//        final Collection<GoblintInput> inputs = getInputs();
 //
 //        final Model model = JenaModelHelper.createJenaModel(inputs);
 //
@@ -108,8 +109,8 @@ public class Persistence {
         confFileAssets.put(input.id, input);
     }
 
-    public static ConfFileAsset[] getConfFileAssets() {
-        return (ConfFileAsset[]) confFileAssets.values().toArray();
+    public static Collection<ConfFileAsset> getConfFileAssets() {
+        return confFileAssets.values();
     }
 
     public static ConfFileAsset getConfFileAssets(int inputId) {
@@ -120,8 +121,8 @@ public class Persistence {
         sourceFolderAssets.put(input.id, input);
     }
 
-    public static SourceFolderAsset[] getSourceFolderAssets() {
-        return (SourceFolderAsset[]) sourceFolderAssets.values().toArray();
+    public static Collection<SourceFolderAsset> getSourceFolderAssets() {
+        return sourceFolderAssets.values();
     }
 
     public static ConfFileAsset getSourceFolderAssets(int inputId) {
@@ -132,8 +133,8 @@ public class Persistence {
         storedInvariantAssets.put(input.id, input);
     }
 
-    public static StoredInvariantAsset[] getStoredInvariantAssets() {
-        return (StoredInvariantAsset[]) storedInvariantAssets.values().toArray();
+    public static Collection<StoredInvariantAsset> getStoredInvariantAssets() {
+        return storedInvariantAssets.values();
     }
 
     public static StoredInvariantAsset getStoredInvariantAssets(int inputId) {
@@ -144,8 +145,8 @@ public class Persistence {
         goblintResultWarnings.put(input.id, input);
     }
 
-    public static GoblintResultWarning[] getGoblintResultWarnings() {
-        return (GoblintResultWarning[]) goblintResultWarnings.values().toArray();
+    public static Collection<GoblintResultWarning> getGoblintResultWarnings() {
+        return goblintResultWarnings.values();
     }
 
     public static GoblintResultWarning getGoblintResultWarnings(int inputId) {
@@ -156,8 +157,8 @@ public class Persistence {
         goblintResultXML.put(input.id, input);
     }
 
-    public static GoblintResultXML[] getGoblintResultXML() {
-        return (GoblintResultXML[]) goblintResultXML.values().toArray();
+    public static Collection<GoblintResultXML> getGoblintResultXML() {
+        return goblintResultXML.values();
     }
 
     public static GoblintResultXML getGoblintResultXML(int inputId) {
@@ -168,8 +169,8 @@ public class Persistence {
         goblintResultHTML.put(input.id, input);
     }
 
-    public static GoblintResultHTML[] getGoblintResultHTML() {
-        return (GoblintResultHTML[]) goblintResultHTML.values().toArray();
+    public static Collection<GoblintResultHTML> getGoblintResultHTML() {
+        return goblintResultHTML.values();
     }
 
     public static GoblintResultHTML getGoblintResultHTML(int inputId) {
@@ -180,16 +181,16 @@ public class Persistence {
         goblintResultStoredInvariants.put(input.id, input);
     }
 
-    public static GoblintResultStoredInvariant[] getGoblintResultStoredInvariants() {
-        return (GoblintResultStoredInvariant[]) goblintResultStoredInvariants.values().toArray();
+    public static Collection<GoblintResultStoredInvariant> getGoblintResultStoredInvariants() {
+        return goblintResultStoredInvariants.values();
     }
 
     public static GoblintResultStoredInvariant getGoblintResultStoredInvariants(int inputId) {
         return goblintResultStoredInvariants.get(inputId);
     }
 
-    public static GoblintAnalysisJob[] getGoblintAnalysisJobs() {
-        return (GoblintAnalysisJob[]) goblintAnalysisJobs.values().toArray();
+    public static Collection<GoblintAnalysisJob> getGoblintAnalysisJobs() {
+        return goblintAnalysisJobs.values();
     }
 
     public static GoblintAnalysisJob getGoblintAnalysisJobs(int inputId) {

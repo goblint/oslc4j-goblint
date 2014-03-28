@@ -4,6 +4,7 @@ package de.tum.in.goblint.oslc.definitions;
 import de.tum.in.goblint.oslc.Constants;
 import org.eclipse.lyo.oslc4j.core.annotation.*;
 import org.eclipse.lyo.oslc4j.core.model.Occurs;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,6 +27,7 @@ public class GoblintAnalysisJob extends TestCase {
     @OslcTitle("confFile")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcDescription("The configuration of the analysis.")
+    @OslcValueType(ValueType.Resource)
     public URI getConfFile() {
         return confFile;
     }
@@ -34,6 +36,7 @@ public class GoblintAnalysisJob extends TestCase {
     @OslcTitle("sourceFolder")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcDescription("The source files to be analyzed.")
+    @OslcValueType(ValueType.Resource)
     public URI getSourceFolder() {
         return sourceFolder;
     }
@@ -42,6 +45,7 @@ public class GoblintAnalysisJob extends TestCase {
     @OslcTitle("storedInvariant")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("An invariant asset that holds for the analysis.")
+    @OslcValueType(ValueType.Resource)
     public URI getStoredInvariant() {
         return storedInvariant;
     }
@@ -50,7 +54,8 @@ public class GoblintAnalysisJob extends TestCase {
     @OslcTitle("analysisStatus")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcDescription("Status of the Analysis.")
-    public String getStatus() {
+    @OslcValueType(ValueType.String)
+    public String getAnalysisStatus() {
         return analysisStatus;
     }
 

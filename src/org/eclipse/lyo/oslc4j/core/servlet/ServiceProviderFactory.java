@@ -18,9 +18,6 @@
  *******************************************************************************/
 package org.eclipse.lyo.oslc4j.core.servlet;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import org.eclipse.lyo.oslc4j.client.ServiceProviderRegistryURIs;
 import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
@@ -30,7 +27,10 @@ import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.resources.ServiceProviderCatalogResource;
 import org.eclipse.lyo.oslc4j.core.resources.ServiceProviderResource;
 
-class ServiceProviderFactory
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class ServiceProviderFactory
 {
     private static final Class<?>[] RESOURCE_CLASSES = new Class<?>[]
     {
@@ -38,7 +38,7 @@ class ServiceProviderFactory
         ServiceProviderResource.class
     };
 
-    private ServiceProviderFactory()
+    public ServiceProviderFactory()
     {
         super();
     }

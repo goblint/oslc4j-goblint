@@ -18,19 +18,6 @@
  *******************************************************************************/
 package org.eclipse.lyo.oslc4j.core.resources;
 
-import java.net.URISyntaxException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
-
 import org.eclipse.lyo.oslc4j.core.annotation.OslcCreationFactory;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcDialog;
 import org.eclipse.lyo.oslc4j.core.annotation.OslcQueryCapability;
@@ -41,8 +28,14 @@ import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.servlet.ServiceProviderCatalogSingleton;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import java.net.URISyntaxException;
+
 @OslcService(OslcConstants.OSLC_CORE_DOMAIN)
-@Path("serviceProviders")
+@Path("OSLC4JRegistry/serviceProviders")
 public class ServiceProviderResource
 {
     @OslcDialog

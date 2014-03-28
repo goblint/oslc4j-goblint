@@ -60,26 +60,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>CLIENT</servlet-name>
-    <url-pattern>/goblint/*</url-pattern>
-  </servlet-mapping>
-
-  <listener>
-    <description>Listener for JAX-RS Servlet</description>
-    <listener-class>org.eclipse.lyo.oslc4j.core.servlet.ServletListener</listener-class>
-  </listener>
-  <servlet>
-    <description>JAX-RS Tools Generated - Do not modify</description>
-    <servlet-name>REGISTRY</servlet-name>
-    <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
-    <init-param>
-      <param-name>javax.ws.rs.Application</param-name>
-      <param-value>org.eclipse.lyo.oslc4j.core.resources.Oslc4JRegistryApplication</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>REGISTRY</servlet-name>
-    <url-pattern>/OSLC4JRegistry/*</url-pattern>
+    <url-pattern>/*</url-pattern>
   </servlet-mapping>
 
   <servlet>

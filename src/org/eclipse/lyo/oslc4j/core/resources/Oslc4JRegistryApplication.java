@@ -18,33 +18,18 @@
  *******************************************************************************/
 package org.eclipse.lyo.oslc4j.core.resources;
 
+import org.eclipse.lyo.oslc4j.application.OslcWinkApplication;
+import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
+import org.eclipse.lyo.oslc4j.core.model.*;
+import org.eclipse.lyo.oslc4j.core.model.Error;
+import org.eclipse.lyo.oslc4j.provider.jena.JenaProvidersRegistry;
+import org.eclipse.lyo.oslc4j.provider.json4j.Json4JProvidersRegistry;
+
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import org.eclipse.lyo.oslc4j.application.OslcWinkApplication;
-import org.eclipse.lyo.oslc4j.core.exception.OslcCoreApplicationException;
-import org.eclipse.lyo.oslc4j.core.model.AllowedValues;
-import org.eclipse.lyo.oslc4j.core.model.Compact;
-import org.eclipse.lyo.oslc4j.core.model.CreationFactory;
-import org.eclipse.lyo.oslc4j.core.model.Dialog;
-import org.eclipse.lyo.oslc4j.core.model.Error;
-import org.eclipse.lyo.oslc4j.core.model.ExtendedError;
-import org.eclipse.lyo.oslc4j.core.model.OAuthConfiguration;
-import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
-import org.eclipse.lyo.oslc4j.core.model.PrefixDefinition;
-import org.eclipse.lyo.oslc4j.core.model.Preview;
-import org.eclipse.lyo.oslc4j.core.model.Property;
-import org.eclipse.lyo.oslc4j.core.model.Publisher;
-import org.eclipse.lyo.oslc4j.core.model.QueryCapability;
-import org.eclipse.lyo.oslc4j.core.model.ResourceShape;
-import org.eclipse.lyo.oslc4j.core.model.Service;
-import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
-import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
-import org.eclipse.lyo.oslc4j.provider.jena.JenaProvidersRegistry;
-import org.eclipse.lyo.oslc4j.provider.json4j.Json4JProvidersRegistry;
 
 public final class Oslc4JRegistryApplication
        extends OslcWinkApplication
@@ -58,6 +43,7 @@ public final class Oslc4JRegistryApplication
         RESOURCE_CLASSES.addAll(Json4JProvidersRegistry.getProviders());
         RESOURCE_CLASSES.add(ServiceProviderCatalogResource.class);
         RESOURCE_CLASSES.add(ServiceProviderResource.class);
+
 
         RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_ALLOWED_VALUES,           AllowedValues.class);
         RESOURCE_SHAPE_PATH_TO_RESOURCE_CLASS_MAP.put(OslcConstants.PATH_COMPACT,                  Compact.class);

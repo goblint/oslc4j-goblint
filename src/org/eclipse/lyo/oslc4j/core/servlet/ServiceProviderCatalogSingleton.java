@@ -18,23 +18,18 @@
  *******************************************************************************/
 package org.eclipse.lyo.oslc4j.core.servlet;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Date;
-import java.util.SortedMap;
-import java.util.SortedSet;
-import java.util.TreeMap;
-import java.util.TreeSet;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response.Status;
-
 import org.eclipse.lyo.oslc4j.client.ServiceProviderRegistryURIs;
 import org.eclipse.lyo.oslc4j.core.model.Publisher;
 import org.eclipse.lyo.oslc4j.core.model.Service;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProvider;
 import org.eclipse.lyo.oslc4j.core.model.ServiceProviderCatalog;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response.Status;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
 
 public class ServiceProviderCatalogSingleton
 {
@@ -116,7 +111,7 @@ public class ServiceProviderCatalogSingleton
     }
 
     // This version is for self-registration and thus package-protected
-    static ServiceProvider registerServiceProvider(final String          baseURI,
+    public static ServiceProvider registerServiceProvider(final String          baseURI,
                                                    final ServiceProvider serviceProvider)
            throws URISyntaxException
     {
