@@ -107,7 +107,7 @@ public class GoblintResource {
                     usages = {OslcConstants.OSLC_USAGE_DEFAULT}
             )
     @POST
-    @Path("createSourceFolder")
+    @Path("createSourceFolders")
     @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
     public Response createSourceFolder(@Context final HttpServletRequest httpServletRequest,
@@ -119,7 +119,7 @@ public class GoblintResource {
                 null,
                 httpServletRequest.getServerName(),
                 httpServletRequest.getServerPort(),
-                httpServletRequest.getContextPath() + "/goblint/sourceFolder/" + identifier,
+                httpServletRequest.getContextPath() + "/goblint/sourceFolders/" + identifier,
                 null,
                 null);
 
@@ -132,86 +132,28 @@ public class GoblintResource {
     }
 
     @GET
-    @Path("sourceFolder")
+    @Path("sourceFolders")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
     @OslcOccurs(Occurs.ZeroOrMany)
-    @OslcPropertyDefinition("goblint:sourceFolder")
-    @OslcTitle("sourceFolder")
+    @OslcPropertyDefinition("goblint:sourceFolders")
+    @OslcTitle("sourceFolders")
     @OslcValueType(ValueType.LocalResource)
     @OslcReadOnly
-    public java.util.Collection<SourceFolderAsset> getSourceFolder()
+    public java.util.Collection<SourceFolderAsset> getSourceFolders()
             throws JSONException {
         return Persistence.getSourceFolderAssets();
     }
 
-    public void setSourceFolder(Collection<SourceFolderAsset> f){
+    public void setSourceFolders(Collection<SourceFolderAsset> f){
         }
 
 
     @GET
-    @Path("sourceFolder/{inputId}")
+    @Path("sourceFolders/{inputId}")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public ConfFileAsset getSourceFolder(@PathParam("inputId") int inputId)
+    public ConfFileAsset getSourceFolders(@PathParam("inputId") int inputId)
             throws JSONException {
         return Persistence.getSourceFolderAssets(inputId);
-    }
-
-    @OslcCreationFactory
-            (
-                    title = "Goblint StoredInvariant Factory",
-                    label = "Goblint StoredInvariant Creation",
-                    resourceShapes = {OslcConstants.PATH_RESOURCE_SHAPES + "/" + Constants.PATH_GOBLINT},
-                    resourceTypes = {"goblint:StoredInvariant", "http://open-services.net/ns/asset#Asset"},
-                    usages = {OslcConstants.OSLC_USAGE_DEFAULT}
-            )
-    @POST
-    @Path("createStoredInvariant")
-    @Consumes({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public Response createStoredInvariant(@Context final HttpServletRequest httpServletRequest,
-                                          final StoredInvariantAsset input)
-            throws URISyntaxException {
-        final int identifier = Utilities.getNewId();
-
-        final URI about = new URI(httpServletRequest.getScheme(),
-                null,
-                httpServletRequest.getServerName(),
-                httpServletRequest.getServerPort(),
-                httpServletRequest.getContextPath() + "/goblint/storedInvariants/" + identifier,
-                null,
-                null);
-
-        input.setAbout(about);
-        input.id = identifier;
-
-        Persistence.addStoredInvariant(input);
-
-        return Response.created(about).entity(input).build();
-    }
-
-    @GET
-    @Path("storedInvariants")
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    @OslcOccurs(Occurs.ZeroOrMany)
-    @OslcPropertyDefinition("goblint:storedInvariants")
-    @OslcTitle("storedInvariants")
-    @OslcValueType(ValueType.LocalResource)
-    @OslcReadOnly
-    public java.util.Collection<StoredInvariantAsset> getStoredInvariants()
-            throws JSONException {
-        return Persistence.getStoredInvariantAssets();
-    }
-
-    public void setStoredInvariants(Collection<StoredInvariantAsset> f){
-        }
-
-
-    @GET
-    @Path("storedInvariants/{inputId}")
-    @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public StoredInvariantAsset getStoredInvariants(@PathParam("inputId") int inputId)
-            throws JSONException {
-        return Persistence.getStoredInvariantAssets(inputId);
     }
 
 
