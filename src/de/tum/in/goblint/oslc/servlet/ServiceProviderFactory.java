@@ -38,8 +38,8 @@ public class ServiceProviderFactory {
                         new PrefixDefinition("rdf", new URI("http://www.w3.org/1999/02/22-rdf-syntax-ns#")),
                         new PrefixDefinition("rdfs", new URI("http://www.w3.org/2000/01/rdf-schema#")),
                         new PrefixDefinition("oslc", new URI("http://open-services.net/ns/core#")),
-                        new PrefixDefinition("oslc-qm", new URI("http://open-services.net/ns/qm#")),
-                        new PrefixDefinition("oslc-asset", new URI("http://open-services.net/ns/asset#")),
+                        new PrefixDefinition("oslcqm", new URI("http://open-services.net/ns/qm#")),
+                        new PrefixDefinition("oslcasset", new URI("http://open-services.net/ns/asset#")),
                         new PrefixDefinition("goblint", new URI(Constants.GOBLINT_NAMESPACE)),
 
                 };

@@ -6,11 +6,11 @@ import de.tum.in.goblint.oslc.Persistence;
 import de.tum.in.goblint.oslc.Utilities;
 import de.tum.in.goblint.oslc.definitions.*;
 import org.apache.wink.json4j.compat.JSONException;
-import org.eclipse.lyo.oslc4j.core.annotation.OslcCreationFactory;
-import org.eclipse.lyo.oslc4j.core.annotation.OslcResourceShape;
-import org.eclipse.lyo.oslc4j.core.annotation.OslcService;
+import org.eclipse.lyo.oslc4j.core.annotation.*;
+import org.eclipse.lyo.oslc4j.core.model.Occurs;
 import org.eclipse.lyo.oslc4j.core.model.OslcConstants;
 import org.eclipse.lyo.oslc4j.core.model.OslcMediaType;
+import org.eclipse.lyo.oslc4j.core.model.ValueType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -18,20 +18,16 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @OslcService(Constants.GOBLINT_DOMAIN)
+@OslcName("GoblintResource")
 @OslcResourceShape(title = "The Goblint OSLC resource", describes = {"goblint:GoblintResource"})
 @Path("goblint")
 public class GoblintResource {
 
-    @GET
-    @Path("test")
-    @Produces({OslcMediaType.APPLICATION_RDF_XML})
-    public String getTestText(){
-        return "all is ok";
-    }
     // Thread pool for file processing tasks
     static ExecutorService executorService = Executors.newFixedThreadPool(2);
 
@@ -68,12 +64,29 @@ public class GoblintResource {
         return Response.created(about).entity(input).build();
     }
 
+    @OslcQueryCapability
+    (
+        title = "confFiles Query Capability",
+        label = "confFiles Catalog Query",
+        resourceShape = OslcConstants.PATH_RESOURCE_SHAPES + "/confFiles" ,
+        resourceTypes = {"goblint:confFiles"},
+        usages = {OslcConstants.OSLC_USAGE_DEFAULT}
+    )
+
     @GET
     @Path("confFiles")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public java.util.Collection<ConfFileAsset> getInputs()
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:confFiles")
+    @OslcTitle("confFiles")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
+    public java.util.Collection<ConfFileAsset> getConfFiles()
             throws JSONException {
         return Persistence.getConfFileAssets();
+    }
+
+    public void setConfFiles(Collection<ConfFileAsset> f){
     }
 
     @GET
@@ -121,10 +134,19 @@ public class GoblintResource {
     @GET
     @Path("sourceFolder")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:sourceFolder")
+    @OslcTitle("sourceFolder")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
     public java.util.Collection<SourceFolderAsset> getSourceFolder()
             throws JSONException {
         return Persistence.getSourceFolderAssets();
     }
+
+    public void setSourceFolder(Collection<SourceFolderAsset> f){
+        }
+
 
     @GET
     @Path("sourceFolder/{inputId}")
@@ -170,10 +192,19 @@ public class GoblintResource {
     @GET
     @Path("storedInvariants")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:storedInvariants")
+    @OslcTitle("storedInvariants")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
     public java.util.Collection<StoredInvariantAsset> getStoredInvariants()
             throws JSONException {
         return Persistence.getStoredInvariantAssets();
     }
+
+    public void setStoredInvariants(Collection<StoredInvariantAsset> f){
+        }
+
 
     @GET
     @Path("storedInvariants/{inputId}")
@@ -220,10 +251,18 @@ public class GoblintResource {
     @GET
     @Path("resultWarnings")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public java.util.Collection<GoblintResultWarning> getGoblintResultWarnings()
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:resultWarnings")
+    @OslcTitle("resultWarnings")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
+    public java.util.Collection<GoblintResultWarning> getResultWarnings()
             throws JSONException {
         return Persistence.getGoblintResultWarnings();
     }
+
+    public void setResultWarnings(Collection<GoblintResultWarning> f){
+        }
 
     @GET
     @Path("resultWarnings/{inputId}")
@@ -269,10 +308,18 @@ public class GoblintResource {
     @GET
     @Path("resultXML")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public java.util.Collection<GoblintResultXML> getGoblintResultXML()
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:resultXML")
+    @OslcTitle("resultXML")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
+    public java.util.Collection<GoblintResultXML> getResultXML()
             throws JSONException {
         return Persistence.getGoblintResultXML();
     }
+
+    public void setResultXML(Collection<GoblintResultXML> f){
+        }
 
     @GET
     @Path("resultXML/{inputId}")
@@ -319,10 +366,18 @@ public class GoblintResource {
     @GET
     @Path("resultHTML")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public java.util.Collection<GoblintResultHTML> getGoblintResultHTML()
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:resultHTML")
+    @OslcTitle("resultHTML")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
+    public java.util.Collection<GoblintResultHTML> getResultHTML()
             throws JSONException {
         return Persistence.getGoblintResultHTML();
     }
+
+    public void setResultHTML(Collection<GoblintResultHTML> f){
+        }
 
     @GET
     @Path("resultHTML/{inputId}")
@@ -369,10 +424,19 @@ public class GoblintResource {
     @GET
     @Path("resultStoredInvariants")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public java.util.Collection<GoblintResultStoredInvariant> getGoblintResultStoredInvariants()
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:resultStoredInvariants")
+    @OslcTitle("resultStoredInvariants")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
+    public java.util.Collection<GoblintResultStoredInvariant> getResultStoredInvariants()
             throws JSONException {
         return Persistence.getGoblintResultStoredInvariants();
     }
+
+    public void setResultStoredInvariants(Collection<GoblintResultStoredInvariant> f){
+        }
+
 
     @GET
     @Path("resultStoredInvariants/{inputId}")
@@ -421,10 +485,18 @@ public class GoblintResource {
     @GET
     @Path("analysisJobs")
     @Produces({OslcMediaType.APPLICATION_RDF_XML, OslcMediaType.APPLICATION_XML, OslcMediaType.TEXT_XML, OslcMediaType.APPLICATION_JSON})
-    public java.util.Collection<GoblintAnalysisJob> getGoblintAnalysisJobs()
+    @OslcOccurs(Occurs.ZeroOrMany)
+    @OslcPropertyDefinition("goblint:analysisJobs")
+    @OslcTitle("analysisJobs")
+    @OslcValueType(ValueType.LocalResource)
+    @OslcReadOnly
+    public java.util.Collection<GoblintAnalysisJob> getAnalysisJobs()
             throws JSONException {
         return Persistence.getGoblintAnalysisJobs();
     }
+
+    public void setAnalysisJobs(Collection<GoblintAnalysisJob> f){
+        }
 
     @GET
     @Path("analysisJobs/{inputId}")

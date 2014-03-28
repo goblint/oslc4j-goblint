@@ -36,7 +36,7 @@ public class Asset extends OSLCObject {
         addType(new URI(Constants.GOBLINT_NAMESPACE + "Asset"));
     }
 
-    @OslcPropertyDefinition("oslc-asset:guid")
+    @OslcPropertyDefinition("oslcasset:guid")
     @OslcTitle("guid")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription(" An identifier for the asset. Assigned by the service provider when a resource is created. Different versions of the same asset will share the same identifier.")
@@ -44,7 +44,7 @@ public class Asset extends OSLCObject {
         return fGuid;
     }
 
-    @OslcPropertyDefinition("oslc-asset:version")
+    @OslcPropertyDefinition("oslcasset:version")
     @OslcTitle("version")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The version of the asset. Possible values may include ‘1.0’, ‘2.0’, etc.")
@@ -68,7 +68,7 @@ public class Asset extends OSLCObject {
         return fType;
     }
 
-    @OslcPropertyDefinition("oslc-asset:state")
+    @OslcPropertyDefinition("oslcasset:state")
     @OslcTitle("state")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("Used to indicate the state of the asset based on values defined by the service provider. This specification does not define the resource for this property, however it should contain a dcterms:title property.")
@@ -76,7 +76,7 @@ public class Asset extends OSLCObject {
         return fState;
     }
 
-    @OslcPropertyDefinition("oslc-asset:categorization")
+    @OslcPropertyDefinition("oslcasset:categorization")
     @OslcTitle("categorization")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("A categorization to classify an asset. The category schema values are defined by the service provider. This specification does not define the resource for this property, however it should contain a dcterms:title property.")
@@ -84,7 +84,7 @@ public class Asset extends OSLCObject {
         return fCategorization;
     }
 
-    @OslcPropertyDefinition("oslc-asset:manufacturer")
+    @OslcPropertyDefinition("oslcasset:manufacturer")
     @OslcTitle("manufacturer")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The name of the asset manufacturer.")
@@ -92,7 +92,7 @@ public class Asset extends OSLCObject {
         return fManufacturer;
     }
 
-    @OslcPropertyDefinition("oslc-asset:model")
+    @OslcPropertyDefinition("oslcasset:model")
     @OslcTitle("model")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The value of the asset model.")
@@ -100,7 +100,7 @@ public class Asset extends OSLCObject {
         return fModel;
     }
 
-    @OslcPropertyDefinition("oslc-asset:serialNumber")
+    @OslcPropertyDefinition("oslcasset:serialNumber")
     @OslcTitle("serialNumber")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The serial number assigned by the asset manufacturer.")
@@ -108,7 +108,7 @@ public class Asset extends OSLCObject {
         return fSerialNumber;
     }
 
-    @OslcPropertyDefinition("oslc-asset:tag")
+    @OslcPropertyDefinition("oslcasset:tag")
     @OslcTitle("tag")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("Specifies the asset tag value for an Asset. Asset tags are typically human readable labels. For hardware assets, these tags are durable, securely attached to equipment, and may also be readable by barcode and/or RFID.")
@@ -116,7 +116,7 @@ public class Asset extends OSLCObject {
         return fTag;
     }
 
-    @OslcPropertyDefinition("oslc-asset:artifact")
+    @OslcPropertyDefinition("oslcasset:artifact")
     @OslcTitle("artifact")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("An Artifact fragment contained in this Asset resource.")
@@ -124,7 +124,7 @@ public class Asset extends OSLCObject {
         return fArtifact;
     }
 
-    @OslcPropertyDefinition("oslc-asset:artifactFactory")
+    @OslcPropertyDefinition("oslcasset:artifactFactory")
     @OslcTitle("artifactFactory")
     @OslcOccurs(Occurs.ExactlyOne)
     @OslcDescription("Resource URI used to post new artifacts to the asset.")
@@ -140,7 +140,7 @@ public class Asset extends OSLCObject {
         return fRelation;
     }
 
-    @OslcPropertyDefinition("oslc-asset:relationshipType")
+    @OslcPropertyDefinition("oslcasset:relationshipType")
     @OslcTitle("relationshipType")
     @OslcOccurs(Occurs.ZeroOrOne)
     @OslcDescription("The type of this relationship from the perspective of the dcterms:relation resource based on values defined by the service provider. This specification does not define the resource for this property, however it should contain a dcterms:title property.")

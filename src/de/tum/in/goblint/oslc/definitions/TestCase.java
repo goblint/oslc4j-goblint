@@ -25,7 +25,7 @@ public class TestCase extends OSLCObject {
         addType(new URI("http://open-services.net/ns/qm#TestCase"));
     }
 
-    @OslcPropertyDefinition("oslc-qm:relatedChangeRequest")
+    @OslcPropertyDefinition("oslcqm:relatedChangeRequest")
     @OslcTitle("relatedChangeRequest")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("A related change request. It is likely that the target resource will be an oslc_cm:ChangeRequest but that is not necessarily the case.")
@@ -33,7 +33,7 @@ public class TestCase extends OSLCObject {
         return relatedChangeRequest;
     }
 
-    @OslcPropertyDefinition("oslc-qm:testsChangeRequest")
+    @OslcPropertyDefinition("oslcqm:testsChangeRequest")
     @OslcTitle("testsChangeRequest")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("Change Request tested by the Test Case. It is likely that the target resource will be an oslc_cm:ChangeRequest but that is not necessarily the case.")
@@ -41,15 +41,15 @@ public class TestCase extends OSLCObject {
         return testsChangeRequest;
     }
 
-    @OslcPropertyDefinition("oslc-qm:usesTestScript")
+    @OslcPropertyDefinition("oslcqm:usesTestScript")
     @OslcTitle("usesTestScript")
     @OslcOccurs(Occurs.ZeroOrMany)
-    @OslcDescription("Test Script used by the Test Case. It is likely that the target resource will be an oslc-qm:TestScript but that is not necessarily the case.")
+    @OslcDescription("Test Script used by the Test Case. It is likely that the target resource will be an oslcqm:TestScript but that is not necessarily the case.")
     public List<URI> getUsesTestScript() {
         return usesTestScript;
     }
 
-    @OslcPropertyDefinition("oslc-qm:validatesRequirement")
+    @OslcPropertyDefinition("oslcqm:validatesRequirement")
     @OslcTitle("validatesRequirement")
     @OslcOccurs(Occurs.ZeroOrMany)
     @OslcDescription("Requirement that is validated by the Test Case. It is likely that the target resource will be an oslc_rm:Requirement but that is not necessarily the case.")
